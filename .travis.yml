@@ -15,9 +15,9 @@ before_script:
 
 script:
   - docker --version # print the version for logging
-  - docker build -t udagram-api-feed --build-arg POSTGRES_USERNAME=${POSTGRES_USERNAME} --build-arg POSTGRES_PASSWORD=${POSTGRES_PASSWORD} --build-arg POSTGRES_HOST=${POSTGRES_HOST} --build-arg POSTGRES_DB=${POSTGRES_DB} --build-arg AWS_BUCKET=${AWS_BUCKET} --build-arg AWS_REGION=${AWS_REGION} --build-arg AWS_PROFILE=${AWS_PROFILE} --build-arg JWT_SECRET=${JWT_SECRET} --build-arg URL=${URL} .
-  - docker tag udagram-api-feed surabhya/udagram-api-feed:latest
+  - docker build -t udagram-api-user --build-arg POSTGRES_USERNAME=${POSTGRES_USERNAME} --build-arg POSTGRES_PASSWORD=${POSTGRES_PASSWORD} --build-arg POSTGRES_HOST=${POSTGRES_HOST} --build-arg POSTGRES_DB=${POSTGRES_DB} --build-arg AWS_BUCKET=${AWS_BUCKET} --build-arg AWS_REGION=${AWS_REGION} --build-arg AWS_PROFILE=${AWS_PROFILE} --build-arg JWT_SECRET=${JWT_SECRET} --build-arg URL=${URL} .
+  - docker tag udagram-api-user surabhya/udagram-api-user:latest
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push surabhya/udagram-api-feed
+  - docker push surabhya/udagram-api-user
